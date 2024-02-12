@@ -1,0 +1,1 @@
+export const TOKEN_SECTRET = 'some secret key'
