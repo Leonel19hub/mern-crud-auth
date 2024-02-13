@@ -1,6 +1,5 @@
 import User from '../models/user.model.js'
 import bcrypt from 'bcryptjs/dist/bcrypt.js';
-import jwt from 'jsonwebtoken'
 import { createAccessToken } from '../libs/jwt.js';
 
 export const register = async (req,res) => {
@@ -24,13 +23,13 @@ export const register = async (req,res) => {
             message: 'User created successfully'
         })
 
-        res.json({
-            id: userSaved._id,
-            username: userSaved.username,
-            email: userSaved.email,
-            createdAt: userSaved.createdAt,
-            updatedAt: userSaved.updatedAt
-        })
+        // res.json({
+        //     id: userSaved._id,
+        //     username: userSaved.username,
+        //     email: userSaved.email,
+        //     createdAt: userSaved.createdAt,
+        //     updatedAt: userSaved.updatedAt
+        // })
     } catch (error) {
         res.status(500).json({message: error.message})
     }
