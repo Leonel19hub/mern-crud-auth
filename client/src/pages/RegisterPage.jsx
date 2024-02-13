@@ -3,15 +3,22 @@ import { registerRequest } from "../api/auth.js";
 
 const RegisterPage = () => {
   const { register, handleSubmit } = useForm();
+
+  const onSubmit = handleSubmit(async (values) => {
+    const res = await registerRequest(values);
+    console.log(res);
+
+    // try {
+    //   const res = await registerRequest(values);
+    //   console.log(res);
+    // } catch (error) {
+    //   console.error("Error registering user:", error);
+    // }
+  });
+
   return (
     <div className="bg-zinc-800 max-w-md p-10 rounder-md">
-      <form
-        onSubmit={handleSubmit(async (values) => {
-          console.log(values);
-          const res = await registerRequest(values)
-          console.log(res);
-        })}
-      >
+      <form onSubmit={onSubmit}>
         <input
           type="text"
           {...register("username", { require: true })}
